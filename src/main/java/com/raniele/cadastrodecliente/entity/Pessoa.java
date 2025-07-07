@@ -13,10 +13,10 @@ public class Pessoa {
 	String nome;
 	
 	@Id
-	Integer cpf;
+	String cpf;
 	
 	@Column(nullable = false)
-	Integer telefone;
+	String telefone;
 	
 	String email;
 	
@@ -34,7 +34,7 @@ public class Pessoa {
 		
 	}
 
-	public Pessoa(String nome, Integer cpf, Integer telefone, String email, String endereco, String nomeDoMedicamento,
+	public Pessoa(String nome, String cpf, String telefone, String email, String endereco, String nomeDoMedicamento,
 			Integer quatidadeVendida, Integer lote) {
 		super();
 		this.nome = nome;
@@ -55,19 +55,21 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-	public Integer getCpf() {
+
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(Integer cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
-	public Integer getTelefone() {
+
+	public String getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(Integer telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
@@ -127,6 +129,8 @@ public class Pessoa {
 		Pessoa other = (Pessoa) obj;
 		return Objects.equals(cpf, other.cpf);
 	}
+
+	
 
 	
 }
