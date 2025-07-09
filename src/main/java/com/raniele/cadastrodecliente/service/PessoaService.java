@@ -28,9 +28,31 @@ public class PessoaService {
 		return repository.save(id);
 	}
 	
+	public Pessoa atualizar (String id, Pessoa novaAtualizacao) { //atualizar um cliente
+		
+		Pessoa pessoa = repository.findById(id).orElseThrow();
+		
+		if(novaAtualizacao.getTelefone() != null) {
+			pessoa.setTelefone(novaAtualizacao.getTelefone());
+		}
+		
+		if(novaAtualizacao.getEmail() != null) {
+			pessoa.setEmail(novaAtualizacao.getEmail());
+		}
+		
+		if(novaAtualizacao.getEndereco() != null) {
+			pessoa.setEndereco(novaAtualizacao.getEndereco());
+		}
+		
+		return repository.save(pessoa);
+	}
 	
+	public void deletar (String id) {
 	
-	
+		 repository.deleteById(id);
+
+		
+	}
 	
 	
 	

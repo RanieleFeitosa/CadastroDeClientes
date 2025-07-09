@@ -5,12 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.service.annotation.DeleteExchange;
 
 import com.raniele.cadastrodecliente.entity.Pessoa;
 import com.raniele.cadastrodecliente.service.PessoaService;
@@ -41,9 +44,16 @@ public class PessoaController {
 	}
 	
 	
+	@PutMapping ("/{id}")//atualizar um cliente
+	public ResponseEntity<Pessoa> atualizacao (@PathVariable String id,@RequestBody Pessoa p){
+		return ResponseEntity.ok(service.atualizar(id, p));
+	}
 	
-	
-	
+	@DeleteMapping ("/{id}")
+	public ResponseEntity<Void> delecao (@PathVariable String id){
+		service.deletar(id);
+		return ResponseEntity.noContent().build();
+	}
 	
 	
 	
