@@ -43,8 +43,9 @@ public class PessoaController {
 	}
 
 	@PutMapping("/{id}") // atualizar um cliente
-	public ResponseEntity<Pessoa> atualizacao(@PathVariable String id, @RequestBody Pessoa p) {
-		return ResponseEntity.ok(service.atualizar(id, p));
+	public ResponseEntity<String> atualizacao(@PathVariable String id, @RequestBody Pessoa p) {
+		service.atualizar(id, p);
+		return ResponseEntity.ok("Informações atualizadas com sucesso!");
 	}
 
 	@DeleteMapping("/{id}") // deletar um cliente

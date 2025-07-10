@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.raniele.cadastrodecliente.entity.Pessoa;
+import com.raniele.cadastrodecliente.exceptions.ClienteNaoEncontradoException;
 import com.raniele.cadastrodecliente.repository.PessoaRepository;
 
 @Service
@@ -19,7 +20,7 @@ public class PessoaService {
 	}
 
 	public Pessoa findById(String id) { // encontrar por id
-		return repository.findById(id).orElseThrow();
+		return repository.findById(id).orElseThrow(ClienteNaoEncontradoException::new);
 	}
 
 	public Pessoa criar(Pessoa pessoa) { // criar um cliente
@@ -28,7 +29,7 @@ public class PessoaService {
 
 	public Pessoa atualizar(String id, Pessoa novaAtualizacao) { // atualizar um cliente
 
-		Pessoa pessoa = repository.findById(id).orElseThrow();
+		Pessoa pessoa = repository.findById(id).orElseThrow(ClienteNaoEncontradoException::new);
 
 		if (novaAtualizacao.getTelefone() != null) {
 			pessoa.setTelefone(novaAtualizacao.getTelefone());
@@ -46,6 +47,7 @@ public class PessoaService {
 	}
 
 	public void deletar(String id) { // deletar um cliente
+		Pessoa pessoa = repository.findById(id).orElseThrow(ClienteNaoEncontradoException::new);
 
 		repository.deleteById(id);
 
