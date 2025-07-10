@@ -7,8 +7,5 @@ import com.raniele.cadastrodecliente.entity.Pessoa;
 
 @Repository
 public interface PessoaRepository extends JpaRepository<Pessoa, String> {
-	
-	
-	
 
 }

@@ -1,6 +1,5 @@
 package com.raniele.cadastrodecliente.service;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,51 +10,44 @@ import com.raniele.cadastrodecliente.repository.PessoaRepository;
 
 @Service
 public class PessoaService {
-	
+
 	@Autowired
 	private PessoaRepository repository;
-	
-	
-	public List<Pessoa> findAll () {   //encontrar todos
+
+	public List<Pessoa> findAll() { // encontrar todos
 		return repository.findAll();
 	}
-	
-	public Pessoa findById(String id) {  //encontrar por id
+
+	public Pessoa findById(String id) { // encontrar por id
 		return repository.findById(id).orElseThrow();
 	}
-	
-	public Pessoa criar (Pessoa id) {  //criar um cliente
-		return repository.save(id);
-	}
-	
-	public Pessoa atualizar (String id, Pessoa novaAtualizacao) { //atualizar um cliente
-		
-		Pessoa pessoa = repository.findById(id).orElseThrow();
-		
-		if(novaAtualizacao.getTelefone() != null) {
-			pessoa.setTelefone(novaAtualizacao.getTelefone());
-		}
-		
-		if(novaAtualizacao.getEmail() != null) {
-			pessoa.setEmail(novaAtualizacao.getEmail());
-		}
-		
-		if(novaAtualizacao.getEndereco() != null) {
-			pessoa.setEndereco(novaAtualizacao.getEndereco());
-		}
-		
+
+	public Pessoa criar(Pessoa pessoa) { // criar um cliente
 		return repository.save(pessoa);
 	}
-	
-	public void deletar (String id) {
-	
-		 repository.deleteById(id);
 
-		
+	public Pessoa atualizar(String id, Pessoa novaAtualizacao) { // atualizar um cliente
+
+		Pessoa pessoa = repository.findById(id).orElseThrow();
+
+		if (novaAtualizacao.getTelefone() != null) {
+			pessoa.setTelefone(novaAtualizacao.getTelefone());
+		}
+
+		if (novaAtualizacao.getEmail() != null) {
+			pessoa.setEmail(novaAtualizacao.getEmail());
+		}
+
+		if (novaAtualizacao.getEndereco() != null) {
+			pessoa.setEndereco(novaAtualizacao.getEndereco());
+		}
+
+		return repository.save(pessoa);
 	}
-	
-	
-	
-	
 
+	public void deletar(String id) { // deletar um cliente
+
+		repository.deleteById(id);
+
+	}
 }

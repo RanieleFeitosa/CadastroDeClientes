@@ -8,30 +8,30 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Pessoa {
-	
+
 	@Column(nullable = false)
 	String nome;
-	
+
 	@Id
 	String cpf;
-	
+
 	@Column(nullable = false)
 	String telefone;
-	
+
 	String email;
-	
+
 	String endereco;
-	
+
 	@Column(nullable = false)
 	String nomeDoMedicamento;
-	
+
 	@Column(nullable = false)
 	Integer quatidadeVendida;
-	
+
 	Integer lote;
-	
+
 	public Pessoa() {
-		
+
 	}
 
 	public Pessoa(String nome, String cpf, String telefone, String email, String endereco, String nomeDoMedicamento,
@@ -55,7 +55,6 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-
 	public String getCpf() {
 		return cpf;
 	}
@@ -63,7 +62,6 @@ public class Pessoa {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-
 
 	public String getTelefone() {
 		return telefone;
@@ -130,7 +128,4 @@ public class Pessoa {
 		return Objects.equals(cpf, other.cpf);
 	}
 
-	
-
-	
 }
